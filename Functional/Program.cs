@@ -8,7 +8,7 @@ namespace Functional
     {
         private static void Main(string[] args)
         {
-            Task_4();
+            Task_8();
         }
 
         public static void Task_1()
@@ -169,6 +169,20 @@ namespace Functional
             var inputCollection = new List<int>();
 
             for (var i = 0; i < input.Length; i++) inputCollection.Add(int.Parse(input[i]));
+
+            Func<List<int>, List<int>> sorter = (inputParam) =>
+            {
+                var even = new List<int>();
+                for (int i = 0; i < inputParam.Count; i++)
+                {
+                    if (inputParam[i]%2==0) even.Add(inputParam[i]);
+                }
+                even.Sort();
+                inputParam.Sort();
+                Console.WriteLine(string.Join(' ', even.Union(inputParam)));
+                return inputParam;
+            };
+            sorter(inputCollection);
         }
     }
 }
